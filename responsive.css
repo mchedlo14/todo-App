@@ -1,0 +1,16 @@
+@media(max-width:470px){
+    .todo-container{
+        width: 100%;
+    }
+    .title{
+        text-align: center;
+        margin-left: 0;
+        font-size: 35px;
+    }
+    .input-container{
+        width: 100%;
+    }
+    #input{
+        width: 320px;
+    }
+}
