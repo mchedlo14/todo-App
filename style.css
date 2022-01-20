@@ -5,6 +5,31 @@
     background-image: linear-gradient(315deg, #0cbaba 0%, #380036 74%);    
     position: relative;
 }
+.loader{
+    inset: 0;
+    background-color: whitesmoke;
+    height: 100vh;
+    position: absolute;
+    z-index: 10;
+}
+@keyframes loader {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+}
+.fa-circle-notch{
+    color: #331747;
+    font-size:40px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    animation: loader 1.3s;
+    animation-iteration-count: infinite;
+}
 .todo-container{
     width: 470px;
     height: 530px;
@@ -41,6 +66,7 @@ input{
     border: 1px solid rgb(187, 186, 186);
     border-radius: 3px;
     font-size: 16px;
+    font-weight: 600;
 }
 .fa-plus-square{
     font-size: 40px;
@@ -61,12 +87,13 @@ input::placeholder{
 .list-paragraph{
     width: 390px;
     height: 40px;
-    background-color: rgb(240, 234, 234);
+    background-color: rgb(243, 240, 240);
     font-size: 22px;
     padding-top: 8px;
     margin-top: 10px;
     margin-left: 35px;
     font-family: 'Roboto', sans-serif;
+    font-weight: bold;
 }
 .info-container{
     width: 100%;
@@ -88,8 +115,25 @@ input::placeholder{
     font-family: 'Roboto', sans-serif;
     font-size: 14px;
     cursor: pointer;
+    font-weight: bold;
 }
 .last-p{
     font-size: 16px;
     font-family: 'Roboto', sans-serif;
+}
+@media(max-width:470px){
+    .input-container{
+        justify-content: space-evenly;
+    }
+    .list-paragraph{
+        font-size: 14px;
+        width: 340px;
+    }
+    #input{
+        font-size: 16px;
+        height: 48px;
+    }
+    .fa-plus-square{
+        font-size: 35px;
+    }
 }
