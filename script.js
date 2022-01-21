@@ -5,36 +5,48 @@ $(document).ready(function (){
 })
 
 function todofunction(){
-    let start = 1;
-
+    
+    var start = 0;
 
     $('#addicon').click(() => {
         let input = $('#input').val() //inputis mnishvneloba rac weria shignit
+        
 
         if(input.length > 0){
             let created_paragraph = $("<p></p>");
             created_paragraph.attr('class','list-paragraph');
 
-            
             $('.list-container').append(created_paragraph)
+            
     
             created_paragraph.text(input)
-            $('#list-count').text('You have' + ' ' + start + ' ' +'panding tasks') 
+            $('#list-count').text('You have' + ' ' +  parseInt(start + 1)  + ' ' +'panding tasks') 
+            
+            if($('.list-paragraph').val().length > 0){
+                start = 0
+            }
 
             lineOnParagraph();
-            deleteAfterDbclick();
 
-            start++
+            ++start
+
+            deleteAfterDbclick(start);
+            
         }
     })
 
-    deleteAfterDbclick();
+    //focusirebuli roca ar ikneba input value carieli rom xdeba
+
+
+    //clear btn-ze dacheris shemdeg
     $('#clear-button').click(function(){
         $('.list-paragraph').remove()
         $('#list-count').text('Please Add List') 
-        start = 1
+        $('#input').val('')
+        start = 0
     })
 
+    //roca fokusirebulia input
     $('#input').focus(function(){
         $(this).css('border','1px solid #321847')
     })
@@ -42,8 +54,8 @@ function todofunction(){
 
     $('#input').focusout(function(){
         $(this).css('border','1px solid rgb(187, 186, 186)')
+        
     })
-
     
 }
 
@@ -56,8 +68,11 @@ function lineOnParagraph(){
     })
 }
 
-function deleteAfterDbclick(){
+function deleteAfterDbclick(number){
     $('.list-paragraph').dblclick(function(){
+        console.log(number);
+        --number
         $(this).remove()
+        $('#list-count').text('You have' + ' ' +  parseInt(number)  + ' ' +'panding tasks') 
     })
 }
