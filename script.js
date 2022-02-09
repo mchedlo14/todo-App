@@ -70,6 +70,10 @@ function lineOnParagraph(){
 
 function deleteAfterDbclick(number){
     $('.list-paragraph').dblclick(function(){
+        
+        if(number < 0){
+            $('#list-count').text('Please Add List')
+        }
         console.log(number);
         --number
         $(this).remove()
